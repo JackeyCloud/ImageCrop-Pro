@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageCrop Pro - 图片批量处理工具</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-crop-alt"></i> ImageCrop Pro</h1>
+            <p>专业的图片批量裁剪工具</p>
+        </header>
+
+        <div class="main-content">
+            <!-- 上传区域 -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>拖拽图片到此处或点击上传</h3>
+                    <p>支持 JPG, PNG, GIF 格式</p>
+                    <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <!-- 设置面板 -->
+            <div class="settings-panel" id="settingsPanel" style="display: none;">
+                <h3><i class="fas fa-cog"></i> 裁剪设置</h3>
+                
+                <div class="format-selector">
+                    <label>选择裁剪格式：</label>
+                    <select id="formatSelect">
+                        <option value="a4">A4 竖版 (210×297mm)</option>
+                        <option value="a4-landscape">A4 横版 (297×210mm)</option>
+                        <option value="a3">A3 竖版 (297×420mm)</option>
+                        <option value="a3-landscape">A3 横版 (420×297mm)</option>
+                        <option value="a5">A5 竖版 (148×210mm)</option>
+                        <option value="a5-landscape">A5 横版 (210×148mm)</option>
+                        <option value="letter">Letter 竖版 (216×279mm)</option>
+                        <option value="letter-landscape">Letter 横版 (279×216mm)</option>
+                        <option value="square">正方形 (1:1)</option>
+                        <option value="custom">自定义比例</option>
+                    </select>
+                </div>
+
+                <div class="custom-ratio" id="customRatio" style="display: none;">
+                    <label>自定义比例：</label>
+                    <input type="number" id="ratioWidth" placeholder="宽度" min="1" value="16">
+                    <span>:</span>
+                    <input type="number" id="ratioHeight" placeholder="高度" min="1" value="9">
+                </div>
+
+                <div class="quality-settings">
+                    <label>输出质量：</label>
+                    <input type="range" id="qualitySlider" min="1" max="100" value="95">
+                    <span id="qualityValue">95%</span>
+                </div>
+
+                <button class="process-btn" id="processBtn">
+                    <i class="fas fa-magic"></i> 开始处理
+                </button>
+            </div>
+
+            <!-- 预览区域 -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3><i class="fas fa-eye"></i> 处理结果预览</h3>
+                <div class="preview-grid" id="previewGrid"></div>
+                
+                <div class="download-section">
+                    <button class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> 批量下载 (ZIP)
+                    </button>
+                    <div class="progress-bar" id="progressBar" style="display: none;">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
